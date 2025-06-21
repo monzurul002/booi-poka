@@ -18,7 +18,7 @@ const Book = ({ book }) => {
               {tags.map((tag, id) => (
                 <div
                   key={id}
-                  className="badge    bg-gray-100 px-4 py-1 text-green-500 font-semibold"
+                  className="badge  bg-gray-100 px-4 py-1 text-green-500 font-semibold"
                 >
                   {tag}
                 </div>
