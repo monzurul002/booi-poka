@@ -1,4 +1,6 @@
 import { useLoaderData, useParams } from "react-router";
+import { addToReadList } from "../../utilities/addTodb";
+import { toast } from "react-toastify";
 
 const BookDetails = () => {
   const data = useLoaderData();
@@ -18,6 +20,12 @@ const BookDetails = () => {
     yearOfPublishing,
     rating,
   } = book;
+
+  const handleReadList = (id) => {
+    addToReadList(id);
+    toast("WOw");
+  };
+
   return (
     <div className="flex">
       <div className="w-1/2 bg-gray-100 rounded-lg mx-5">
@@ -45,7 +53,9 @@ const BookDetails = () => {
           <p>Publisher:{publisher} </p>
           <p>Rating: {rating}</p>
           <div className="flex gap-x-3">
-            <button className="btn">Read </button>
+            <button onClick={() => handleReadList(id)} className="btn">
+              Add Read List{" "}
+            </button>
             <button className="bg-cyan-400 px-4 btn rounded-lg text-white">
               Wishlist
             </button>

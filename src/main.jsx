@@ -7,6 +7,8 @@ import ErrorPage from "./components/ErrorPage/ErrorPage.jsx";
 import Home from "./components/Home/Home.jsx";
 import Dashboard from "./components/Dashboard/Dashboard.jsx";
 import BookDetails from "./components/BookDetails/BookDetails.jsx";
+import ListedBooks from "./components/ListedBooks/ListedBooks.jsx";
+import { ToastContainer } from "react-toastify";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +25,11 @@ const router = createBrowserRouter([
         element: <Dashboard />,
       },
       {
+        path: "/listed-books",
+        element: <ListedBooks />,
+        loader: () => fetch("booksData.json"),
+      },
+      {
         path: "/book/:bookId",
         loader: () => fetch("booksData.json"),
         element: <BookDetails />,
@@ -34,5 +41,6 @@ const router = createBrowserRouter([
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <RouterProvider router={router}></RouterProvider>
+    <ToastContainer />
   </StrictMode>
 );
